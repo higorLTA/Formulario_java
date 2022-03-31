@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http//thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+	.page-footer{
+	background-color:#4ad66d;
+	}
+</style>
+	
+		<body>
+			<header th:fragments="cabecalho" style="background-color:#4ad66d"></header>
+	
+				<footer class="page-footer" th:fragment="footer" style="background-color:#4ad66d">
+         			 <div class="footer-copyright">
+           			 <div class="container">
+            			© 2022 Copyright Text
+            		</div>
+          			</div>
+        		</footer>	
+
+</body>
+</html>

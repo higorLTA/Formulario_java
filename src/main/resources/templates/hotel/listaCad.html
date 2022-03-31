@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http//thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+ <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+	
+	<table>
+	
+<form action="/buscarPalavraChave">
+<label>palvra chave:</label>
+<input type="search" name="palavraChave">
+<button type="submit">Buscar</button>
+</form>
+	
+		<thead>
+		<tr>
+				<th>ID</th>
+   				<th>Switch</th>
+  			    <th>Descrição</th>
+  			    <th>Palavra Chave</th>
+   				<th>Alterar</th>
+   				<th>Excluir</th>
+		   </tr>		
+		
+		</thead>
+		
+		<tbody>
+			
+			<tr th:each="hot:${switchs}">
+				<td th:text="${hot.id}"/>
+				<td th:text="${hot.nome}"/>
+				<td th:text="${hot.descricao}"/>
+				<td th:text="${hot.palavraChave}"/>
+				
+				
+		<td><a th:href="@{/alterarSwitchs(id=${hot.id})}"><button type="">Alterar </button></a></td>
+		<td><a th:href="@{/excluirSwitchs(id=${hot.id})}"><button type="submit">excluir</button></a></td>
+		
+			</tr>
+		</tbody>
+	</table>
+	
+	<ul class="pagination">
+	<li th:class="${paginaAtual == 1 ? 'disabled':''}">
+		<a th:href="${paginaAtual > 1 ? paginaAtual - 1 : '#'}">
+		<i class="material-icons">chevron_left</i></a></li>
+    
+    <li th:each="p:${numPaginas}" th:class="${paginaAtual == p ? 'active green accent-3' : 'waves-effect'}">
+      	<a th:href="${p}"><span th:text="${p}"></span></a></li>	
+
+    <li th:class="${paginaAtual == totalPaginas ? 'disabled': 'waves-effect'}">
+    <a th:href="${paginaAtual < totalPaginas ? paginaAtual + 1 : '#'}">
+    <i class="material-icons">chevron_right</i></a></li>
+  </ul>
+  
+ 	<footer th:replace="fragments/Padrao :: footer" ></footer> 
+	
+
+</body>
+</html>
