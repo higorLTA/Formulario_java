@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http//thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.page-footer{
+	background-color:#4ad66d;
+	margin-top: 300px;
+	height: 100px;
+	
+}
+.nav-wrapper{
+	background-color: #4ad66d;
+	
+}
+.busca{
+	margin-top: 05%;
+	
+}
+.quite{
+	margin-top: 05%;
+	padding: 05%;
+	
+}
+.atracao{
+	margin-top: 0,5%;
+	margin-bottom: 0,5;
+}
+
+
+
+</style>
+
+<body>
+
+
+	<header>
+	<nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>	
+	</header>
+	
+
+<form class="busca">
+<label>palvra chave:</label>
+<input type="search" name="palavraChave">
+<button type="submit">Buscar</button>
+</form>
+
+	
+		<div class="input-field col s12">
+    <select>
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+    <label>Materialize Select</label>
+  </div> 
+  </div>
+ 
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<!-- Compiled and minified JavaScript -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="/JavaScript/ScriptJason.js"></script>
+	<script>
+		$(document).ready(function() {
+		$('select').formSelect();
+	});
+	</script>
+  
+  
+  <div class="quite">
+  
+  <div class="row">
+    <div class="input-field col s6">
+    <i class="material-icons prefix">account_circle</i>
+      <input th:value="${TipoHotel?.nome}" id="first_name2" name="nome" type="text" class="validate">
+      <label class="active" for="first_name2">Nome:</label>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="input-field col s6">
+    <i class="material-icons prefix">account_circle</i>
+      <input th:value="${TipoHotel?.nome}" id="first_name2" name="nome" type="text" class="validate">
+      <label class="active" for="first_name2">descrição:</label>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="input-field col s6">
+    <i class="material-icons prefix">account_circle</i>
+      <input th:value="${TipoHotel?.nome}" id="first_name2" name="nome" type="text" class="validate">
+      <label class="active" for="first_name2">cep:</label>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="input-field col s6">
+    <i class="material-icons prefix">account_circle</i>
+      <input th:value="${TipoHotel?.nome}" id="first_name2" name="nome" type="text" class="validate">
+      <label class="active" for="first_name2">cidade:</label>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="input-field col s6">
+    <i class="material-icons prefix">account_circle</i>
+      <input th:value="${TipoHotel?.nome}" id="first_name2" name="nome" type="text" class="validate">
+      <label class="active" for="first_name2">telefone:</label>
+    </div>
+  </div>
+  
+  <div class="atracao">
+	 <p> Atração:</p>
+	 
+	 <form action="#">
+    <p>
+      <label>
+        <input type="checkbox" />
+        <span>Sim</span>
+      </label>
+
+      <label>
+        <input type="checkbox" />
+        <span>Não</span>
+      </label>
+    </p>
+    
+    </div>
+    
+    <div class="estacionamento">
+   <p> Estacionamento:</p>
+	 
+	 <form action="#">
+    <p>
+      <label>
+        <input type="checkbox" />
+        <span>Sim</span>
+      </label>
+
+      <label>
+        <input type="checkbox" />
+        <span>Não</span>
+      </label>
+    </p>
+    
+    </div>
+    
+     <div class="row">
+    <div class="input-field col s6">
+    <i class="material-icons prefix">account_circle</i>
+      <input th:value="${TipoHotel?.nome}" id="first_name2" name="nome" type="text" class="validate">
+      <label class="active" for="first_name2">telefone:</label>
+    </div>
+  </div>
+  
+   <div class="row">
+    <div class="input-field col s6">
+    <i class="material-icons prefix">account_circle</i>
+      <input th:value="${TipoHotel?.nome}" id="first_name2" name="nome" type="text" class="validate">
+      <label class="active" for="first_name2">telefone:</label>
+    </div>
+  </div>
+  
+  </div>
+  
+  <footer class="page-footer">
+          <div class="footer-copyright">
+            <div class="container">
+            © 2022 Copyright
+            </div>
+          </div>
+        </footer>	
+    
+ <script src="/JavaScript/Form.js"></script>
+  
+    
+</body>
+</html>

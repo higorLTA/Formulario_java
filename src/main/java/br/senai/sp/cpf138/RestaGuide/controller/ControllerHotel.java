@@ -41,7 +41,7 @@ public class ControllerHotel {
 	//request para salvar o administrador
 	@RequestMapping(value = "salvarAdministrador", method = RequestMethod.POST)
 	public String salvarAdmin(@Valid Administrador admin, BindingResult result, RedirectAttributes attr) {
-		
+	
 		//verifica se holve erro na validação do objeto		
 		if(result.hasErrors()) {
 			//envia mensagem de erro via requisição

@@ -2,11 +2,24 @@
 <html xmlns:th="http//thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Cadastros de Switchs</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
+<style>
+
+.formu{
+	margin-top: 50px;
+}
+
+.foot{
+	margin-top: 100px;
+}
+
+
+</style>
 <body>
 	
 	<table>
@@ -17,6 +30,7 @@
 <button type="submit">Buscar</button>
 </form>
 	
+	<div  class="formu">
 		<thead>
 		<tr>
 				<th>ID</th>
@@ -38,8 +52,11 @@
 				<td th:text="${hot.palavraChave}"/>
 				
 				
+				
 		<td><a th:href="@{/alterarSwitchs(id=${hot.id})}"><button type="">Alterar </button></a></td>
 		<td><a th:href="@{/excluirSwitchs(id=${hot.id})}"><button type="submit">excluir</button></a></td>
+		
+		</div>
 		
 			</tr>
 		</tbody>
@@ -58,7 +75,7 @@
     <i class="material-icons">chevron_right</i></a></li>
   </ul>
   
- 	<footer th:replace="fragments/Padrao :: footer" ></footer> 
+ 	<footer class="foot" th:replace="fragments/Padrao :: footer" ></footer> 
 	
 
 </body>
