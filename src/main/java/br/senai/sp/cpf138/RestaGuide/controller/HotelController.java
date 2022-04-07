@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.senai.sp.cpf138.RestaGuide.model.Administrador;
@@ -30,11 +32,11 @@ public class HotelController {
 		
 	}
 	
-	@RequestMapping(value = "salvartipo", method = RequestMethod.POST)
-	public String salvarAdmin(@Valid Hotel hotel , BindingResult result, RedirectAttributes attr) {
+	@RequestMapping(value = "salvarHosp", method = RequestMethod.POST)
+	public String salvarAdmin(Hotel hotel, @RequestParam("fileFotos")MultipartFile[] fileFotos) {
+		System.out.println(fileFotos.length);
 		
 		reptipo.save(hotel);
-		attr.addFlashAttribute("mensagemSucesso", "Administrador cadrstrado com sucesso. ID"+hotel.getId());
-		return "redirect:form";
+		return "redirect:formhoteis";
 	}
 }

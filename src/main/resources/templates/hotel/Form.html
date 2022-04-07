@@ -3,198 +3,198 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata"
+	rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 </head>
 
 <style>
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
-.page-footer{
-	background-color:#4ad66d;
+
+.page-footer {
+	background-color: #4ad66d;
 	margin-top: 300px;
 	height: 100px;
-	
 }
-.nav-wrapper{
+
+.nav-wrapper {
 	background-color: #4ad66d;
-	
 }
-.busca{
+
+.busca {
 	margin-top: 05%;
-	
 }
-.quite{
+
+.quite {
+	width: 80%;
+	text-align: center;
+	margin: 40px auto;
 	margin-top: 05%;
 	padding: 05%;
-	
-}
-.atracao{
-	margin-top: 0,5%;
-	margin-bottom: 0,5;
 }
 
-
-
+.atracao {
+	display: inline-block;
+}
 </style>
 
 <body>
 
-
 	<header>
-	<nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
-      </ul>
-    </div>
-  </nav>	
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo">Logo</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="sass.html">Sass</a></li>
+					<li><a href="badges.html">Components</a></li>
+					<li><a href="collapsible.html">JavaScript</a></li>
+				</ul>
+			</div>
+		</nav>
 	</header>
-	
 
-<form class="busca">
-<label>palvra chave:</label>
-<input type="search" name="palavraChave">
-<button type="submit">Buscar</button>
-</form>
 
-	
-		<div class="input-field col s12">
-    <select>
-      <option value="" disabled selected>Choose your option</option>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
-    </select>
-    <label>Materialize Select</label>
-  </div> 
-  </div>
- 
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<!-- Compiled and minified JavaScript -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script src="/JavaScript/ScriptJason.js"></script>
-	<script>
-		$(document).ready(function() {
-		$('select').formSelect();
-	});
-	</script>
-  
-  
-  <div class="quite">
-  
-  <div class="row">
-    <div class="input-field col s6">
-    <i class="material-icons prefix">account_circle</i>
-      <input th:value="${TipoHotel?.nome}" id="first_name2" name="nome" type="text" class="validate">
-      <label class="active" for="first_name2">Nome:</label>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="input-field col s6">
-    <i class="material-icons prefix">account_circle</i>
-      <input th:value="${TipoHotel?.nome}" id="first_name2" name="nome" type="text" class="validate">
-      <label class="active" for="first_name2">descrição:</label>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="input-field col s6">
-    <i class="material-icons prefix">account_circle</i>
-      <input th:value="${TipoHotel?.nome}" id="first_name2" name="nome" type="text" class="validate">
-      <label class="active" for="first_name2">cep:</label>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="input-field col s6">
-    <i class="material-icons prefix">account_circle</i>
-      <input th:value="${TipoHotel?.nome}" id="first_name2" name="nome" type="text" class="validate">
-      <label class="active" for="first_name2">cidade:</label>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="input-field col s6">
-    <i class="material-icons prefix">account_circle</i>
-      <input th:value="${TipoHotel?.nome}" id="first_name2" name="nome" type="text" class="validate">
-      <label class="active" for="first_name2">telefone:</label>
-    </div>
-  </div>
-  
-  <div class="atracao">
-	 <p> Atração:</p>
-	 
-	 <form action="#">
-    <p>
-      <label>
-        <input type="checkbox" />
-        <span>Sim</span>
-      </label>
+	<form method="post" action="salvarHosp" enctype="multipart/form-date"
+		accept="charset-utf-8">
+		<label>palvra chave:</label> <input type="search" name="palavraChave">
+		<button type="submit">Buscar</button>
 
-      <label>
-        <input type="checkbox" />
-        <span>Não</span>
-      </label>
-    </p>
-    
-    </div>
-    
-    <div class="estacionamento">
-   <p> Estacionamento:</p>
-	 
-	 <form action="#">
-    <p>
-      <label>
-        <input type="checkbox" />
-        <span>Sim</span>
-      </label>
+		<div class="quite">
 
-      <label>
-        <input type="checkbox" />
-        <span>Não</span>
-      </label>
-    </p>
-    
-    </div>
-    
-     <div class="row">
-    <div class="input-field col s6">
-    <i class="material-icons prefix">account_circle</i>
-      <input th:value="${TipoHotel?.nome}" id="first_name2" name="nome" type="text" class="validate">
-      <label class="active" for="first_name2">telefone:</label>
-    </div>
-  </div>
-  
-   <div class="row">
-    <div class="input-field col s6">
-    <i class="material-icons prefix">account_circle</i>
-      <input th:value="${TipoHotel?.nome}" id="first_name2" name="nome" type="text" class="validate">
-      <label class="active" for="first_name2">telefone:</label>
-    </div>
-  </div>
-  
-  </div>
-  
-  <footer class="page-footer">
-          <div class="footer-copyright">
-            <div class="container">
-            © 2022 Copyright
-            </div>
-          </div>
-        </footer>	
-    
- <script src="/JavaScript/Form.js"></script>
-  
-    
+			<div class="input-field col s12">
+				<select>
+					<option value="" disabled selected>selecione:</option>
+					<option value="1">Motel</option>
+					<option value="2">POUSADA</option>
+					<option value="3">RESORT</option>
+					<option value="4">HOTEL FAZENDA</option>
+					<option value="5">CAMA E CAFÉ</option>
+					<option value="6">HOTEL HISTÓRICO</option>
+					<option value="7">APART-HOTEL</option>
+					<option value="8">ALBERGUE</option>
+				</select> <label>Tipo da hospedagem:</label>
+			</div>
+
+			<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+			<!-- Compiled and minified JavaScript -->
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+			<script src="/JavaScript/ScriptJason.js"></script>
+			<script>
+				$(document).ready(function() {
+					$('select').formSelect();
+				});
+			</script>
+
+
+
+
+			<div class="row">
+				<div class="input-field col s6">
+					<i class="material-icons prefix">account_circle</i> <input
+						id="first_name2" name="nome" type="text" class="validate">
+					<label class="active" for="first_name2">Nome:</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field col s6">
+					<i class="material-icons prefix">account_circle</i> <input
+						id="first_name2" name="descricao" type="text" class="validate">
+					<label class="active" for="first_name2">descrição:</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field col s6">
+					<i class="material-icons prefix">account_circle</i> <input
+						id="first_name2" name="cep" type="text" class="validate">
+					<label class="active" for="first_name2">cep:</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field col s6">
+					<i class="material-icons prefix">account_circle</i> <input
+						id="first_name2" name="endereco" type="text" class="validate">
+					<label class="active" for="first_name2">endereço:</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field col s6">
+					<i class="material-icons prefix">account_circle</i> <input
+						id="first_name2" name="cidade" type="text" class="validate">
+					<label class="active" for="first_name2">cidade:</label>
+				</div>
+			</div>
+
+			<div class="atracao">
+				<p>Atração:</p>
+				<p>
+					<label> <input type="checkbox" /> <span>Sim</span>
+					</label> <label> <input type="checkbox" /> <span>Não</span>
+					</label>
+				<p>Estacionamento:</p>
+				<p>
+					<label> <input type="checkbox" /> <span>Sim</span>
+					</label> <label> <input type="checkbox" /> <span>Não</span>
+					</label>
+				</p>
+
+			</div>
+
+			<div class="row">
+				<div class="input-field col s6">
+					<i class="material-icons prefix">account_circle</i> <input
+						id="first_name2" name="telefone" type="text" class="validate">
+					<label class="active" for="first_name2">telefone:</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field col s6">
+					<i class="material-icons prefix">account_circle</i> <input
+						id="first_name2" name="foto" type="text" class="validate">
+					<label class="active" for="first_name2">imagem:</label>
+				</div>
+			</div>
+
+			<div class="file-field input-field">
+				<div class="btn">
+					<span>File</span> <input type="file" multiple name="fileFotos">
+				</div>
+				<div class="file-path-wrapper">
+					<input class="file-path validate" type="text"
+						placeholder="Upload one or more files">
+				</div>
+			</div>
+
+		</div>
+
+		<button class="waves-effect waves-light btn" type="submit">
+			enviar <i class="material-icons prefix">send</i>
+		</button>
+
+	</form>
+
+
+
+	<footer class="page-footer">
+		<div class="footer-copyright">
+			<div class="container">© 2022 Copyright</div>
+		</div>
+	</footer>
+
+	<script src="/JavaScript/Form.js"></script>
+
+
 </body>
 </html>

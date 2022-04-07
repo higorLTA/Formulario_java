@@ -24,7 +24,7 @@ public class Hotel {
 	@NotEmpty
 	private String cep;
 	@NotEmpty
-	private String endereço;
+	private String endereco;
 	@NotEmpty
 	private String cidade;
 	private boolean atracao;
