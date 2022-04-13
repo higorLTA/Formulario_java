@@ -35,6 +35,10 @@ public class Hotel {
 	private String foto;
 	@ManyToOne
 	private TipoHotel tipo;
+	
+	public String[] verFotos() {
+		return this.foto.split(";");
+	}
 		
 
 }

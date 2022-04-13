@@ -61,8 +61,11 @@
 	</header>
 
 
-	<form method="post" action="salvarHosp" enctype="multipart/form-date"
+	<form method="post" action="salvarHosp" enctype="multipart/form-data"
 		accept="charset-utf-8">
+		
+		<input type="hidden" th:value="${Hotel?.id}" name="id"/>
+		
 		<label>palvra chave:</label> <input type="search" name="palavraChave">
 		<button type="submit">Buscar</button>
 
@@ -99,6 +102,7 @@
 			<div class="row">
 				<div class="input-field col s6">
 					<i class="material-icons prefix">account_circle</i> <input
+					th:value="${Hotel?.nome}"
 						id="first_name2" name="nome" type="text" class="validate">
 					<label class="active" for="first_name2">Nome:</label>
 				</div>
@@ -107,6 +111,7 @@
 			<div class="row">
 				<div class="input-field col s6">
 					<i class="material-icons prefix">account_circle</i> <input
+					th:value="${Hotel?.descricao}"
 						id="first_name2" name="descricao" type="text" class="validate">
 					<label class="active" for="first_name2">descrição:</label>
 				</div>
@@ -115,6 +120,7 @@
 			<div class="row">
 				<div class="input-field col s6">
 					<i class="material-icons prefix">account_circle</i> <input
+					th:value="${Hotel?.cep}"
 						id="first_name2" name="cep" type="text" class="validate">
 					<label class="active" for="first_name2">cep:</label>
 				</div>
@@ -123,6 +129,7 @@
 			<div class="row">
 				<div class="input-field col s6">
 					<i class="material-icons prefix">account_circle</i> <input
+					th:value="${Hotel?.endereco}"
 						id="first_name2" name="endereco" type="text" class="validate">
 					<label class="active" for="first_name2">endereço:</label>
 				</div>
@@ -131,6 +138,7 @@
 			<div class="row">
 				<div class="input-field col s6">
 					<i class="material-icons prefix">account_circle</i> <input
+					th:value="${Hotel?.cidade}"
 						id="first_name2" name="cidade" type="text" class="validate">
 					<label class="active" for="first_name2">cidade:</label>
 				</div>
@@ -139,13 +147,11 @@
 			<div class="atracao">
 				<p>Atração:</p>
 				<p>
-					<label> <input type="checkbox" /> <span>Sim</span>
-					</label> <label> <input type="checkbox" /> <span>Não</span>
+					<label> <input  type="checkbox"> <span>Sim</span>
 					</label>
 				<p>Estacionamento:</p>
 				<p>
-					<label> <input type="checkbox" /> <span>Sim</span>
-					</label> <label> <input type="checkbox" /> <span>Não</span>
+					<label> <input type="checkbox" > <span>Sim</span>
 					</label>
 				</p>
 
@@ -154,28 +160,36 @@
 			<div class="row">
 				<div class="input-field col s6">
 					<i class="material-icons prefix">account_circle</i> <input
+					th:value="${Hotel?.telefone}"
 						id="first_name2" name="telefone" type="text" class="validate">
 					<label class="active" for="first_name2">telefone:</label>
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="input-field col s6">
-					<i class="material-icons prefix">account_circle</i> <input
-						id="first_name2" name="foto" type="text" class="validate">
-					<label class="active" for="first_name2">imagem:</label>
-				</div>
-			</div>
-
 			<div class="file-field input-field">
 				<div class="btn">
-					<span>File</span> <input type="file" multiple name="fileFotos">
+					<span>File</span> <input type="file" multiple name="fileFotos" accept="image/*">
 				</div>
 				<div class="file-path-wrapper">
 					<input class="file-path validate" type="text"
 						placeholder="Upload one or more files">
 				</div>
 			</div>
+			
+			<div th:if="${Hotel?.foto?.length > 0}">
+				<h6>Fotos cadastradas:</h6>
+					<div>
+						<ul>
+							<li th:each="foto,i : ${Hotel?.verFotos()}">
+								<img th:src="${foto}">
+								<a th:href="@{excluirFotoHosp(idHotel=${Hotel.id}, numFoto = ${i.index})}"></a>
+								<i class="material-icons prefix">delete_forever</i>
+								
+							</li>
+						</ul>
+					</div>
+					
+				</div>
 
 		</div>
 
