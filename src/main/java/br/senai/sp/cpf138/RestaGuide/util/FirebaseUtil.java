@@ -30,7 +30,7 @@ public class FirebaseUtil {
 	private final String BUCKET_NAME ="hospedagemguide.appspot.com";
 	
 	//contante para o sufixo da URL
-	private final String PREFIX = "https://firebasestorage.googleapis.com/v0/b/guide-lanchonete.appspot.com/o/";
+	private final String PREFIX = "https://firebasestorage.googleapis.com/v0/b/hospedagemguide.appspot.com/o/";
 	
 	//constante para o suffix da URL
 	private final String SUFFIX = "?alt=media";

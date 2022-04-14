@@ -49,14 +49,14 @@ public class ControllerCadHoteis {
 			//salva o Hotel
 			repository.save(tipoH);
 			attr.addFlashAttribute("mensagemSucesso", "Switch cadastrada com sucesso. ID"+tipoH.getId());
-			return "redirect:CadHoteis";
+			return "redirect:listaSwitchs/1";
 					
 		}catch(Exception e) {
 			attr.addFlashAttribute("mensagemErro", "houve um erro ao cadastrar a Switch escolhida:"+e.getMessage());
 					
 			}
 		
-		return"redirect:CadHoteis"; 
+		return"redirect:listaSwitchs/1"; 
 	}
 	
 	@RequestMapping("listaSwitchs/{page}")

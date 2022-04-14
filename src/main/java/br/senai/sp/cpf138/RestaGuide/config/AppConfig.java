@@ -2,14 +2,27 @@ package br.senai.sp.cpf138.RestaGuide.config;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import br.senai.sp.cpf138.RestaGuide.interceptor.AppInterceptor;
 
 @Configuration
-public class AppConfig {
+public class AppConfig implements WebMvcConfigurer {
+	
+	@Autowired
+	private AppInterceptor interceptor;
+	
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(interceptor);
+		
+	}
 	
 	@Bean
 	public DataSource datasource() {

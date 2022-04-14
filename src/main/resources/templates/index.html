@@ -42,27 +42,16 @@
 </style>
 
   <body>
-  
-  <header th:replace="fragments/Padrao :: cabecalho"></header>
 
-	<input type="hidden" th:values="${administrador?.id}" name="id"/>
 	
-	<!-- para achar a pagina só precisa do method post e do metodo -->
-	<form class="principal" method="post" action="salvarAdministrador">
 	
-	<div class="row">
-    <div class="input-field col s6">
-    <i class="material-icons prefix">account_circle</i>
-      <input th:value="${administrador?.nome}" id="first_name2" name="nome" type="text" class="validate">
-      <label class="active" for="first_name2">Nome</label>
-    </div>
-  </div>
+	<form action="login" method="post">
   
   <div class="row">
       <div class="row">
         <div class="input-field col s12">
         <i class="material-icons prefix">emaile</i>
-          <input id="email" type="email" name="email" class="validate" th:value="${administrador?.email}">
+          <input id="email" type="email" name="email" class="validate">
           <label for="email" class="active">Email</label>
         </div>
       </div>

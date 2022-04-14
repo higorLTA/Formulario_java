@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Binding;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.senai.sp.cpf138.RestaGuide.annotation.Publico;
 import br.senai.sp.cpf138.RestaGuide.model.Administrador;
 import br.senai.sp.cpf138.RestaGuide.repository.AdmRepository;
 import br.senai.sp.cpf138.RestaGuide.util.HashUtil;
@@ -134,6 +136,33 @@ public class ControllerHotel {
 	public String excluirCadrastros(Long id) {
 		repository.deleteById(id);
 		return "redirect:listaHotel/1";
+	}
+	
+	@Publico
+	@RequestMapping("login")
+	public String login(Administrador admLogin, RedirectAttributes attr, HttpSession session) {
+		// buscar o administrador no BD, atravez do e-mail e senha
+		Administrador admin = repository.findByEmailAndSenha(admLogin.getEmail(), admLogin.getSenha());
+		// verifica se existe o admin
+		if(admin == null) {
+			// se for nulo avisa ao usuario
+			attr.addFlashAttribute("mensagemErro", "Login e/ou senha invalidos");
+			return "redirect:/";			
+		}else {
+			// se não for nulo, salva na sessão e acessa o sistema
+			session.setAttribute("usuarioLogado", admin);
+			return "redirect:listaHotel/1";
+		}
+				
+	}
+	
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+	//elimina o usuário da session
+	session.invalidate();
+	//retorna para a barra inicial
+	return "redirect:/";
+
 	}
 	
 	

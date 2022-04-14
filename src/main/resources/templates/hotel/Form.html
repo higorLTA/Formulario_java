@@ -47,24 +47,14 @@
 
 <body>
 
-	<header>
-		<nav>
-			<div class="nav-wrapper">
-				<a href="#" class="brand-logo">Logo</a>
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="sass.html">Sass</a></li>
-					<li><a href="badges.html">Components</a></li>
-					<li><a href="collapsible.html">JavaScript</a></li>
-				</ul>
-			</div>
-		</nav>
-	</header>
+	<header th:replace="fragments/Padrao :: cabecalho"></header>
 
 
 	<form method="post" action="salvarHosp" enctype="multipart/form-data"
 		accept="charset-utf-8">
 		
 		<input type="hidden" th:value="${Hotel?.id}" name="id"/>
+		<input type="hidden" th:value="${Hotel?.foto}" name="foto"/>
 		
 		<label>palvra chave:</label> <input type="search" name="palavraChave">
 		<button type="submit">Buscar</button>
@@ -72,16 +62,10 @@
 		<div class="quite">
 
 			<div class="input-field col s12">
-				<select>
+				<select name="tipo.id" class="sel">
+				<option th:each="t:${tipos}" th:text="${t.nome}" th:value="${t.id}"></option>
 					<option value="" disabled selected>selecione:</option>
-					<option value="1">Motel</option>
-					<option value="2">POUSADA</option>
-					<option value="3">RESORT</option>
-					<option value="4">HOTEL FAZENDA</option>
-					<option value="5">CAMA E CAFÉ</option>
-					<option value="6">HOTEL HISTÓRICO</option>
-					<option value="7">APART-HOTEL</option>
-					<option value="8">ALBERGUE</option>
+					
 				</select> <label>Tipo da hospedagem:</label>
 			</div>
 
@@ -102,7 +86,7 @@
 			<div class="row">
 				<div class="input-field col s6">
 					<i class="material-icons prefix">account_circle</i> <input
-					th:value="${Hotel?.nome}"
+					th:value="${Hotel?.nome}" required="required"
 						id="first_name2" name="nome" type="text" class="validate">
 					<label class="active" for="first_name2">Nome:</label>
 				</div>
@@ -111,7 +95,7 @@
 			<div class="row">
 				<div class="input-field col s6">
 					<i class="material-icons prefix">account_circle</i> <input
-					th:value="${Hotel?.descricao}"
+					th:value="${Hotel?.descricao}" required="required"
 						id="first_name2" name="descricao" type="text" class="validate">
 					<label class="active" for="first_name2">descrição:</label>
 				</div>
@@ -120,7 +104,7 @@
 			<div class="row">
 				<div class="input-field col s6">
 					<i class="material-icons prefix">account_circle</i> <input
-					th:value="${Hotel?.cep}"
+					th:value="${Hotel?.cep}" required="required"
 						id="first_name2" name="cep" type="text" class="validate">
 					<label class="active" for="first_name2">cep:</label>
 				</div>
@@ -129,7 +113,7 @@
 			<div class="row">
 				<div class="input-field col s6">
 					<i class="material-icons prefix">account_circle</i> <input
-					th:value="${Hotel?.endereco}"
+					th:value="${Hotel?.endereco}" required="required"
 						id="first_name2" name="endereco" type="text" class="validate">
 					<label class="active" for="first_name2">endereço:</label>
 				</div>
@@ -138,7 +122,7 @@
 			<div class="row">
 				<div class="input-field col s6">
 					<i class="material-icons prefix">account_circle</i> <input
-					th:value="${Hotel?.cidade}"
+					th:value="${Hotel?.cidade}" required="required"
 						id="first_name2" name="cidade" type="text" class="validate">
 					<label class="active" for="first_name2">cidade:</label>
 				</div>
@@ -160,7 +144,7 @@
 			<div class="row">
 				<div class="input-field col s6">
 					<i class="material-icons prefix">account_circle</i> <input
-					th:value="${Hotel?.telefone}"
+					th:value="${Hotel?.telefone}" required="required"
 						id="first_name2" name="telefone" type="text" class="validate">
 					<label class="active" for="first_name2">telefone:</label>
 				</div>
@@ -182,8 +166,9 @@
 						<ul>
 							<li th:each="foto,i : ${Hotel?.verFotos()}">
 								<img th:src="${foto}">
-								<a th:href="@{excluirFotoHosp(idHotel=${Hotel.id}, numFoto = ${i.index})}"></a>
-								<i class="material-icons prefix">delete_forever</i>
+								<a th:href="@{excluirFotoHosp(idHotel=${Hotel.id}, numFoto = ${i.index})}">
+								<i class="material-icons prefix">delete_forever</i></a>
+							
 								
 							</li>
 						</ul>
@@ -201,11 +186,7 @@
 
 
 
-	<footer class="page-footer">
-		<div class="footer-copyright">
-			<div class="container">© 2022 Copyright</div>
-		</div>
-	</footer>
+	  <footer th:replace="fragments/Padrao :: footer">
 
 	<script src="/JavaScript/Form.js"></script>
 

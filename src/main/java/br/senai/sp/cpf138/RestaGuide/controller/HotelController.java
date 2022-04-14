@@ -32,7 +32,10 @@ import br.senai.sp.cpf138.RestaGuide.util.HashUtil;
 public class HotelController {
 	
 	@Autowired
-	private HotelRepository reptipo;
+	private RepositoryCad repTipo;
+	
+	@Autowired
+	private HotelRepository repHosp;
 	
 	@Autowired
 	private FirebaseUtil firebaseUtil;
@@ -40,7 +43,7 @@ public class HotelController {
 	
 	@RequestMapping("formHospdagens")
 	public String form(Model model) {
-		model.addAttribute("tipos", reptipo.findAll());
+		model.addAttribute("tipos", repHosp.findAll());
 		return "hotel/Form";
 		
 	}
@@ -50,7 +53,7 @@ public class HotelController {
 		System.out.println(fileFotos.length);
 		
 		//string para a url das fotos
-		String fotos = "";
+		String fotos = hotel.getFoto();
 		//percorrer cada arquivo que foi submetido no formulario
 		for(MultipartFile arquivo : fileFotos) {
 			//verificar se oarquivo esta vazio
@@ -69,7 +72,7 @@ public class HotelController {
 		}	
 		hotel.setFoto(fotos);
 		
-		reptipo.save(hotel);
+		repHosp.save(hotel);
 		return "redirect:listaHosp/1";
 	}
 	
@@ -80,7 +83,7 @@ public class HotelController {
 				PageRequest pageable = PageRequest.of(page-1, 6, Sort.by(Sort.Direction.ASC,"nome"));
 				
 				//cria a pagina atual atravez do repository 
-				Page<Hotel> pagina = reptipo.findAll(pageable);
+				Page<Hotel> pagina = repHosp.findAll(pageable);
 				
 				//descobrir o total de paginas 
 				int totalPages = pagina.getTotalPages();
@@ -106,7 +109,7 @@ public class HotelController {
 	@RequestMapping("alterarHosp")
 	public String alterarCadrastro(Model model, Long id) {
 		
-		Hotel hotel = reptipo.findById(id).get();
+		Hotel hotel = repHosp.findById(id).get();
 		
 		model.addAttribute("Hotel", hotel);
 		
@@ -116,14 +119,20 @@ public class HotelController {
 	
 	@RequestMapping("excluirHosp")
 	public String excluirCadrastros(Long id) {
-		reptipo.deleteById(id);
+		Hotel hotel = repHosp.findById(id).get();
+		if(hotel.getFoto().length() > 0) {
+			for(String foto : hotel.verFotos()) {
+				firebaseUtil.deletar(foto);
+			}
+		}
+		repHosp.deleteById(id);
 		return "redirect:listaHosp/1";
 	}
 	
 	@RequestMapping("excluirFotoHosp")
 	public String excluirFoto(Long idHotel, int numFoto, Model model) {
 		// busca a hospedagem no banco
-		Hotel hotel = reptipo.findById(idHotel).get();
+		Hotel hotel = repHosp.findById(idHotel).get();
 		// pega a String da foto a ser excluida
 		String fotoUrl = hotel.verFotos()[numFoto];
 		// excluir do firebase
@@ -131,7 +140,7 @@ public class HotelController {
 		// "arranca" a foto da string fotos
 		hotel.setFoto(hotel.getFoto().replace(fotoUrl+";",""));
 		// salva no BD o objeto rest
-		reptipo.save(hotel);
+		repHosp.save(hotel);
 		//adciona o hotel da model
 		model.addAttribute("Hotel", hotel);
 		//encaminhar para o form
