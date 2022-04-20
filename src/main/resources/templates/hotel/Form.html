@@ -131,11 +131,11 @@
 			<div class="atracao">
 				<p>Atração:</p>
 				<p>
-					<label> <input  type="checkbox"> <span>Sim</span>
+					<label> <input  type="checkbox" th:checked="${Hotel?.atracao}" name="atracao"> <span>Sim</span>
 					</label>
 				<p>Estacionamento:</p>
 				<p>
-					<label> <input type="checkbox" > <span>Sim</span>
+					<label> <input type="checkbox" th:checked="${Hotel?.estacionamento}" name="estacionamento"> <span>Sim</span>
 					</label>
 				</p>
 

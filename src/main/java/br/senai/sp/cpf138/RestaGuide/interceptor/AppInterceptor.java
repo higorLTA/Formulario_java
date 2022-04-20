@@ -33,6 +33,14 @@ public class AppInterceptor implements HandlerInterceptor {
 			}
 			// fazer o casting para handlerMethod
 			HandlerMethod metodoChamado =(HandlerMethod) handler;
+			
+			if(uri.startsWith("/api")) {
+				//quando for API
+				return true;
+				
+			}else {
+				
+			
 			// se o metodo for publico, libera
 			if(metodoChamado.getMethodAnnotation(Publico.class)!= null) {
 				return true;
@@ -49,6 +57,7 @@ public class AppInterceptor implements HandlerInterceptor {
 			}
 			
 		}
-		return true;
 	}
+		return true;
+}
 }

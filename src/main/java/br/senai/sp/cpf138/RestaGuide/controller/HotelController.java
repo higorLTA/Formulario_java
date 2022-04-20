@@ -43,7 +43,7 @@ public class HotelController {
 	
 	@RequestMapping("formHospdagens")
 	public String form(Model model) {
-		model.addAttribute("tipos", repHosp.findAll());
+		model.addAttribute("tipos", repTipo.findAll());
 		return "hotel/Form";
 		
 	}
