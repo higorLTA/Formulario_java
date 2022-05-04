@@ -1,13 +1,24 @@
 package br.senai.sp.cpf138.RestaGuide.interceptor;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.Claim;
+import com.auth0.jwt.interfaces.DecodedJWT;
+
+import br.senai.sp.cpf138.RestaGuide.annotation.Privado;
 import br.senai.sp.cpf138.RestaGuide.annotation.Publico;
+import br.senai.sp.cpf138.RestaGuide.rest.UsuarioRestController;
 
 @Component
 public class AppInterceptor implements HandlerInterceptor {
@@ -35,6 +46,38 @@ public class AppInterceptor implements HandlerInterceptor {
 			HandlerMethod metodoChamado =(HandlerMethod) handler;
 			
 			if(uri.startsWith("/api")) {
+				// variavel para o token
+				String token = null;
+				//se for um metodo privado
+				if(metodoChamado.getMethodAnnotation(Privado.class) != null) {
+					
+					try {
+						
+						//obtem o token da request
+					token = request.getHeader("Authorization");
+					
+					//algoritimo para descriptografar
+					Algorithm algoritmo = Algorithm.HMAC256(UsuarioRestController.SECRET);
+					
+					// objeto para verificar o token 
+					JWTVerifier verifier = JWT.require(algoritmo).withIssuer(UsuarioRestController.EMISSOR).build();
+					DecodedJWT jwt = verifier.verify(token);
+					
+					//enviar os dados do payload
+					Map<String, Claim> payload = jwt.getClaims();
+					System.out.println(payload.get("nome_usuario"));
+					return true;
+					
+					} catch (Exception e) {
+						if(token == null) {
+							response.sendError(HttpStatus.UNAUTHORIZED.value(), e.getMessage());
+						}else {
+							response.sendError(HttpStatus.FORBIDDEN.value(), e.getMessage());
+						}
+						return false;
+					}
+					
+				}
 				//quando for API
 				return true;
 				
